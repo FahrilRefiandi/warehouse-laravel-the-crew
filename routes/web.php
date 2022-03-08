@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\JenisBarangController;
+use App\Http\Controllers\SatuanController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +28,6 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('/barang',BarangController::class);
+Route::resource('/jenis-barang',JenisBarangController::class);
+Route::resource('/satuan',SatuanController::class);
+Route::resource('/supplier',SupplierController::class);
