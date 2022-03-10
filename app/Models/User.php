@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +20,8 @@ class User extends Authenticatable
         'nama',
         'username',
         'password',
+        'foto_profil',
+        'level',
     ];
 
     /**
@@ -41,4 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public function photoProfile(){
+    //     if($this->attributes['foto_profil'] == null ){
+    //         return 'foto-profil/user.png';
+    //     }
+    //     return $this->attributes['foto_profil'];
+    // }
 }
