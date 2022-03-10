@@ -34,7 +34,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ## Contributing
 
-Programmer         : Fahril Refiandi.
+Programmer         : Fahril Refiandi. <br>
 Project Management : Fahril Refiandi.
 
 ## Code of Conduct
