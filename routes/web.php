@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('cover');
 });
 
 Route::get('/dashboard', function () {
@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('/barang',BarangController::class);
+Route::resource('/barang',BarangController::class)->middleware('admin');
 Route::resource('/jenis-barang',JenisBarangController::class);
 Route::resource('/satuan',SatuanController::class);
 Route::resource('/supplier',SupplierController::class);
