@@ -34,8 +34,9 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ## Contributing
 
+Project Management : Fahril Refiandi. <br>
 Programmer         : Fahril Refiandi. <br>
-Project Management : Fahril Refiandi.
+Web Design         : Dara Ilma Deudona <br>
 
 ## Code of Conduct
 
