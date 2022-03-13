@@ -17,9 +17,16 @@
                         <span class="hide-menu">Profile</span>
                     </a>
                 </li>
-
+                <h6 style="margin-left: 10px" class="text-light mt-4">Management data</h6>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="barang"
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/barang"
+                        aria-expanded="false">
+                        <i class="mdi mdi-account-network"></i>
+                        <span class="hide-menu">Barang</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                         aria-expanded="false">
                         <i class="mdi mdi-account-network"></i>
                         <span class="hide-menu">Blank page</span>

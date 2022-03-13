@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('/barang',BarangController::class)->middleware('admin');
+Route::resource('/barang',BarangController::class)->middleware('auth');
 Route::resource('/jenis-barang',JenisBarangController::class);
 Route::resource('/satuan',SatuanController::class);
 Route::resource('/supplier',SupplierController::class);
