@@ -39,6 +39,20 @@ Programmer         : Fahril Refiandi. <br>
 Web Design         : Dara Ilma Deudoena. <br>
 Web Design         : Tegar Try Buana. <br>
 Tester             : Tita Arum Shela Santik. <br>
+
+## Cara menjalankan :
+
+1. git clone copy link repositori ini. <br>
+2. cd warehouse-laravel-the-crew <br>
+3. composer update <br>
+4. rubah .env.example ke .env dan setting database nya. <br>
+5. tambahkan FILESYSTEM_DRIVER=public pada file .env <br>
+6. jalankan php artisan migrate --seed pada terminal (--seed otomatis membuatkan users bisa digunakan untuk login) <br>
+7. login dengan username(bisa dilihat di database) dan password default 12345678. <br>
+
+jika terjadi kesalahan program seperti : <br>
+ foto tidak bisa diload jalankan php artisan storage:link. <br>
+ atau hubungi <a href="https://wa.me/+6282131371687?text=warehouse-laravel-the-crew%20tidak%20bisa%20jalan%20%2F%20terjadi%20masalah%3A%20(sebutkan%20permasalahannya).">Whatsapp.</a> <br>
 <!-- 
 ## Code of Conduct
 
