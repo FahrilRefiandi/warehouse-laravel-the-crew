@@ -4,6 +4,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,8 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::resource('/profil',ProfileController::class)->middleware('auth');
+Route::post('/update-foto-profile/{id}',[ProfileController::class,'updateFotoProfile'])->middleware('auth');
 Route::resource('/barang',BarangController::class)->middleware('auth');
 Route::resource('/jenis-barang',JenisBarangController::class);
 Route::resource('/satuan',SatuanController::class);

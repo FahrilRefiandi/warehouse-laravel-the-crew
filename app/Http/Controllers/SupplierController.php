@@ -13,8 +13,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $data=Supplier::orderBy('nama_supplier','asc')->get();
-        dd($data);
+        $data=Supplier::orderBy('nama_supplier','asc')->latest()->get();
+        return view('backend.supplier',compact('data'));
     }
 
     /**
@@ -58,7 +58,7 @@ class SupplierController extends Controller
     public function show($id)
     {
         $data = Supplier::where('id',$id)->first();
-        dd($data);
+        return view('backend.editSupplier',compact('data'));
     }
 
     /**
@@ -102,9 +102,9 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $req, $id)
     {
         Supplier::where('id',$id)->delete();
-        return redirect('/supplier')->with('sukses',"Data berhasil dihapus.");
+        return redirect('/supplier')->with('sukses',"Data $req->nama_supplier berhasil dihapus.");
     }
 }

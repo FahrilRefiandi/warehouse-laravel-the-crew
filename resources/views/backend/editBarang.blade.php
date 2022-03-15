@@ -12,26 +12,17 @@
             <div class="d-flex align-items-center justify-content-end">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="/dashboard">Dashboard</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit data barang {{ $data->nama_barang }}</li>
+                        <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/barang">Data Barang</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Data Barang {{ $data->nama_barang }}</li>
                     </ol>
                 </nav>
             </div>
         </div>
     </div>
 </div>
-<!-- ============================================================== -->
-<!-- End Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Container fluid  -->
-<!-- ============================================================== -->
+
 <div class="container-fluid">
-    <!-- ============================================================== -->
-    <!-- Start Page Content -->
-    <!-- ============================================================== -->
     <div class="row">
         <div class="col-12">
             <div class="card">

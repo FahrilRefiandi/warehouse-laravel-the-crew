@@ -36,7 +36,9 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 Project Management : Fahril Refiandi. <br>
 Programmer         : Fahril Refiandi. <br>
-Web Design         : Dara Ilma Deudona <br>
+Web Design         : Dara Ilma Deudoena. <br>
+Web Design         : Tegar Try Buana. <br>
+Tester             : Tita Arum Shela Santik. <br>
 <!-- 
 ## Code of Conduct
 

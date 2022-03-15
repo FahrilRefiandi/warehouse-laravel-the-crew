@@ -12,6 +12,9 @@
     <link href="{{ asset('backend') }}/dist/css/style.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -39,7 +42,7 @@
 
             <footer class="footer text-center">
                 Warehouse. Designed and Developed by
-                <a href="#">The Team</a>.
+                <a href="#">The Crew</a>.
             </footer>
         </div>
     </div>

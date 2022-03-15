@@ -9,5 +9,5 @@ class Supplier extends Model
 {
     use HasFactory;
     protected $table='supplier';
-    
+    protected $fillable=['nama_supplier','alamat_supplier','kontak_supplier'];
 }
