@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('backend') }}/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images')}}/logo/logo-kecil.png">
     <!-- Custom CSS -->
     <link href="{{ asset('backend') }}/dist/css/style.min.css" rel="stylesheet">
 
