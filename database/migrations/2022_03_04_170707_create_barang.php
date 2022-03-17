@@ -18,10 +18,10 @@ class CreateBarang extends Migration
             $table->string('kode_barang')->unique();
             $table->string('nama_barang');
             $table->integer('stok');
-            $table->integer('harga_beli');
-            $table->integer('harga_jual');
             $table->integer('satuan_id');
-            $table->integer('supplier_id');
+            // $table->integer('harga_beli');
+            // $table->integer('harga_jual');
+            // $table->integer('supplier_id');
             $table->integer('jenis_id');
             $table->timestamps();
         });

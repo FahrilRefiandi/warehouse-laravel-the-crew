@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid mt-2 ">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -60,7 +60,7 @@
                                   <th class="text-light">Kode Barang</th>
                                   <th class="text-light">Nama Barang</th>
                                   <th class="text-light">Stok</th>
-                                  <th class="text-light">Harga Jual</th>
+                                  <th class="text-light">Jenis</th>
                                   <th class="text-light">Diperbarui</th>
                                   <th class="text-light text-center ">Aksi</th>
 
@@ -73,7 +73,7 @@
                                     <td>{{ $item->kode_barang }}</td>
                                     <td>{{ $item->nama_barang }}</td>
                                     <td>{{ $item->stok}} <strong class="text-info" >{{ $item->satuan}}</strong> </td>
-                                    <td>{{ number_format($item->harga_jual,0,',','.') }} <strong class="text-danger" >IDR</strong> </td>
+                                    <td>{{ $item->jenis }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->updated_at)->isoFormat('dddd D MMMM YYYY') }}</td>
                                     <td class="text-center" >
                                         <a href="/barang/{{ $item->id }}" class="btn btn-warning btn-md  rounded-2" > <i class="mdi mdi-lead-pencil"></i> </a>
@@ -199,7 +199,7 @@
                     </div>
                   </div>
 
-                <div class="form-floating mb-3">
+                {{-- <div class="form-floating mb-3">
                     <input type="number" class="form-control  @error('harga_beli') is-invalid  @enderror" id="harga_beli" name="harga_beli" placeholder="a" value="{{ old('harga_beli') }}">
                     <label for="harga_beli">Harga Beli</label>
                     @error('harga_beli')
@@ -249,7 +249,7 @@
                         </script>
                         @endsection
                     @enderror
-                </div>
+                </div> --}}
 
             {{-- form --}}
 

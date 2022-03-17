@@ -120,57 +120,6 @@
                             </div>
                           </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="number" class="form-control  @error('harga_beli') is-invalid  @enderror" id="harga_beli" name="harga_beli" placeholder="a" value="{{ $data->harga_beli }}">
-                            <label for="harga_beli">Harga Beli</label>
-                            @error('harga_beli')
-                                <small class="text-danger" style="margin-left: 8px;" > {{$message}} </small>
-                                 @section('modal')
-                                <script>
-                                    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
-                                    document.onreadystatechange = function () {
-                                    myModal.show();
-                                    };
-                                </script>
-                                @endsection
-                            @enderror
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="number" class="form-control @error('harga_jual') is-invalid  @enderror" id="harga_jual" name="harga_jual" placeholder="a" value="{{ $data->harga_jual }}">
-                            <label for="harga_jual">Harga Jual</label>
-                            @error('harga_jual')
-                                <small class="text-danger" style="margin-left: 8px;" > {{$message}} </small>
-                                 @section('modal')
-                                <script>
-                                    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
-                                    document.onreadystatechange = function () {
-                                    myModal.show();
-                                    };
-                                </script>
-                                @endsection
-                            @enderror
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <select class="form-select  @error('supplier') is-invalid  @enderror" id="floatingSelectGrid" aria-label="Floating label select example" name="supplier">
-                                @foreach ($supplier as $item)
-                                        <option  @if ($item->id == $data->supplier_id) selected @endif value="{{$item->id}}">{{$item->nama_supplier}}</option>
-                                    @endforeach
-                              </select>
-                            <label for="nama_barang">Supplier</label>
-                            @error('supplier')
-                                <small class="text-danger" style="margin-left: 8px;" > {{$message}} </small>
-                                 @section('modal')
-                                <script>
-                                    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
-                                    document.onreadystatechange = function () {
-                                    myModal.show();
-                                    };
-                                </script>
-                                @endsection
-                            @enderror
-                        </div>
 
                         <nav class="navbar navbar-light">
                             <div class="container-fluid justify-content-center ">

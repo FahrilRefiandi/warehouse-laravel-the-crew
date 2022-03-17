@@ -15,7 +15,7 @@ class JenisBarangController extends Controller
     public function index()
     {
         $data=JenisBarang::orderBy('jenis','asc')->get();
-        dd($data);
+        return view('backend.jenis',compact('data'));
     }
 
     /**
@@ -37,11 +37,11 @@ class JenisBarangController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'jenis'=>'required|string',
+            'jenis_barang'=>'required|string',
         ]);
 
         JenisBarang::create([
-            'jenis' => $request->jenis,
+            'jenis' => $request->jenis_barang,
         ]);
 
         return redirect('/jenis-barang')->with('sukses',"Data $request->jenis berhasil ditambahkan.");
@@ -55,7 +55,8 @@ class JenisBarangController extends Controller
      */
     public function show($id)
     {
-        //
+        $data=JenisBarang::where('id',$id)->first();
+        return view('backend.editJenisBarang',compact('data'));
     }
 
     /**
@@ -64,11 +65,6 @@ class JenisBarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $data=JenisBarang::where('id',$id)->first();
-        dd($data);
-    }
 
     /**
      * Update the specified resource in storage.
@@ -79,12 +75,13 @@ class JenisBarangController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
         $request->validate([
-            'jenis'=>'required|string',
+            'jenis_barang'=>'required|string',
         ]);
 
         JenisBarang::where('id',$id)->update([
-            'jenis' => $request->jenis,
+            'jenis' => $request->jenis_barang,
         ]);
 
         return redirect('/jenis-barang')->with('sukses',"Data $request->jenis berhasil diupdate.");

@@ -19,13 +19,17 @@ class BarangController extends Controller
     public function index()
     {
         // $data = Barang::latest()->get();
-        $data = Barang::join('satuan','barang.satuan_id','satuan.id')->latest()->get(['Barang.*','satuan.satuan']);
+        $data = Barang::
+        leftJoin('satuan','barang.satuan_id','satuan.id')
+        ->leftJoin('jenis_barang','jenis_barang.id','barang.jenis_id')
+        ->latest()->get(['barang.*','satuan.satuan','jenis_barang.jenis']);
+
         // dd($data);
         $jenisBarang=JenisBarang::orderBy('jenis','asc')->get();
         $satuan=Satuan::orderBy('satuan','asc')->get();
-        $supplier=Supplier::orderBy('nama_supplier','asc')->get();
+        // $supplier=Supplier::orderBy('nama_supplier','asc')->get();
 
-        return view('backend.barang',compact('data','jenisBarang','satuan','supplier'));
+        return view('backend.barang',compact('data','jenisBarang','satuan'));
     }
 
     /**
@@ -46,15 +50,16 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'kode_barang' => 'required|unique:barang',
             'nama_barang' => 'required|string',
             'stok' => 'required|numeric',
             'satuan' => 'required|numeric',
-            'supplier' => 'required|numeric',
+            // 'supplier' => 'required|numeric',
             'jenis' => 'required|numeric',
-            'harga_beli' => 'required|numeric',
-            'harga_jual' => 'required|numeric',
+            // 'harga_beli' => 'required|numeric',
+            // 'harga_jual' => 'required|numeric',
         ]);
 
         Barang::create([
@@ -62,10 +67,10 @@ class BarangController extends Controller
             'nama_barang' => $request->nama_barang,
             'stok' => $request->stok,
             'satuan_id' => $request->satuan,
-            'supplier_id' => $request->supplier,
+            // 'supplier_id' => $request->supplier,
             'jenis_id' => $request->jenis,
-            'harga_beli' => $request->harga_beli,
-            'harga_jual' => $request->harga_jual,
+            // 'harga_beli' => $request->harga_beli,
+            // 'harga_jual' => $request->harga_jual,
         ]);
         return redirect('/barang')->with('sukses',"Data $request->nama_barang berhasil disimpan.");
     }
@@ -81,9 +86,8 @@ class BarangController extends Controller
         $data = Barang::where('id',$id)->first();
         $jenisBarang=JenisBarang::orderBy('jenis','asc')->get();
         $satuan=Satuan::orderBy('satuan','asc')->get();
-        $supplier=Supplier::orderBy('nama_supplier','asc')->get();
 
-        return view('backend.editBarang',compact('data','jenisBarang','satuan','supplier'));
+        return view('backend.editBarang',compact('data','jenisBarang','satuan'));
     }
 
     /**
@@ -111,10 +115,10 @@ class BarangController extends Controller
             'nama_barang' => 'required|string',
             'stok' => 'required|numeric',
             'satuan' => 'required|numeric',
-            'supplier' => 'required|numeric',
+            // 'supplier' => 'required|numeric',
             'jenis' => 'required|numeric',
-            'harga_beli' => 'required|numeric',
-            'harga_jual' => 'required|numeric',
+            // 'harga_beli' => 'required|numeric',
+            // 'harga_jual' => 'required|numeric',
         ]);
 
         Barang::where('id',$id)->update([
@@ -122,10 +126,10 @@ class BarangController extends Controller
             'nama_barang' => $request->nama_barang,
             'stok' => $request->stok,
             'satuan_id' => $request->satuan,
-            'supplier_id' => $request->supplier,
+            // 'supplier_id' => $request->supplier,
             'jenis_id' => $request->jenis,
-            'harga_beli' => $request->harga_beli,
-            'harga_jual' => $request->harga_jual,
+            // 'harga_beli' => $request->harga_beli,
+            // 'harga_jual' => $request->harga_jual,
         ]);
         return redirect('/barang')->with('sukses',"Data $request->nama_barang berhasil diperbarui.");
     }

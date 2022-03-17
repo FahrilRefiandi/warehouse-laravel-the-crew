@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSupplier extends Migration
+class CreateToko extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateSupplier extends Migration
      */
     public function up()
     {
-        Schema::create('supplier', function (Blueprint $table) {
+        Schema::create('toko', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_supplier');
-            $table->string('alamat_supplier');
-            $table->string('kontak_supplier');
+            $table->string('nama_toko');
+            $table->string('kode_pesanan');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateSupplier extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supplier');
+        Schema::dropIfExists('toko');
     }
 }

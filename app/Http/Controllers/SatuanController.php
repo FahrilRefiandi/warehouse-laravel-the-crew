@@ -14,8 +14,9 @@ class SatuanController extends Controller
      */
     public function index()
     {
-        $data=Satuan::orderBy('satuan','asc')->get();
-        dd($data);
+        $data=Satuan::orderBy('satuan','asc')->latest()->get();
+
+        return view('backend.satuan',compact('data'));
     }
 
     /**
@@ -55,7 +56,8 @@ class SatuanController extends Controller
      */
     public function show($id)
     {
-        //
+        $data=Satuan::where('id',$id)->first();
+        return view('backend.editSatuan',compact('data'));
     }
 
     /**
@@ -66,8 +68,7 @@ class SatuanController extends Controller
      */
     public function edit($id)
     {
-        $data=Satuan::where('id',$id)->first();
-        dd($data);
+
     }
 
     /**
