@@ -88,7 +88,7 @@ class SatuanController extends Controller
             'satuan' => $request->satuan,
         ]);
 
-        return redirect('/jenis-barang')->with('sukses',"Data $request->satuan berhasil diupdate.");
+        return redirect('/satuan')->with('sukses',"Data $request->satuan berhasil diupdate.");
     }
 
     /**

@@ -38,10 +38,11 @@
                     <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/profil"><i class="ti-user me-1 ms-1"></i>
                             My Profile</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet me-1 ms-1"></i>
-                            My Balance</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email me-1 ms-1"></i>
-                            Inbox</a>
+                        <form method="post" action="/logout">
+                        @csrf
+                        <button class="dropdown-item" type="submit"><i class="ti-email me-1 ms-1"></i>
+                            Logout</a>
+                        </form>
                     </ul>
                 </li>
             </ul>

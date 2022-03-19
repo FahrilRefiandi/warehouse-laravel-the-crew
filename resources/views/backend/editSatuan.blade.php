@@ -45,7 +45,7 @@
 
                         <nav class="navbar navbar-light">
                             <div class="container-fluid justify-content-center ">
-                                <a href="/supplier" class="btn btn-danger me-2"> Kembali </a>
+                                <a href="/satuan" class="btn btn-danger me-2"> Kembali </a>
                                 <button type="submit" class="btn btn-success"> Simpan </button>
                             </div>
                           </nav>

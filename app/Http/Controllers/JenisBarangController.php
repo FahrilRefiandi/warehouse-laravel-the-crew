@@ -84,7 +84,7 @@ class JenisBarangController extends Controller
             'jenis' => $request->jenis_barang,
         ]);
 
-        return redirect('/jenis-barang')->with('sukses',"Data $request->jenis berhasil diupdate.");
+        return redirect('/jenis-barang')->with('sukses',"Data $request->jenis_barang berhasil diupdate.");
     }
 
     /**
