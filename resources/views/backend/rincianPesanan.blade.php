@@ -3,6 +3,25 @@
 @section('title', 'Rincian Pesanan ' . $toko->nama_toko)
 @section('content')
 
+@php
+if($toko->status == 0){
+    $bg="bg-secondary";
+    $ketStatus="Belum ada respon.";
+}elseif ($toko->status == 1) {
+    $bg="bg-danger";
+    $ketStatus="Pesanan dibatalkan.";
+}elseif ($toko->status == 2) {
+    $bg="bg-success";
+    $ketStatus="Pesanan sedang diproses.";
+}elseif ($toko->status == 3) {
+    $bg="bg-warning";
+    $ketStatus="Pesanan sedang dalam perjalanan.";
+}else {
+    $bg="bg-danger";
+    $ketStatus="Error";
+}
+@endphp
+
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
@@ -58,20 +77,34 @@
                             </div>
                         @endif
 
-                        @if (session('modal'))
-                            {{ session('modal') }}
-                        @endif
 
-                        @if ($toko->status <= 1)
+                        @if (Auth::user()->level != 0)
+                        <nav class="navbar navbar-light">
+                            <div class="container-fluid">
+                            <form method="POST" action="/update-status-pesanan/{{ $toko->id }}" class="d-flex float-left ">
+                                @csrf
+                                <select class="form-select" aria-label="Default select example" name="status">
+                                    <option selected value="{{ $toko->status }}">{{$ketStatus}}</option>
+                                    <option value="1">Pesanan Dibatalkan.</option>
+                                    <option value="2">Pesanan Sedang Diproses.</option>
+                                    <option value="3">Pesanan Sedang Dalam Perjalanan.</option>
+                                  </select>
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Simpan</button>
+                            </form>
+                        </div>
+                    </div>
+                    @endif
+
+                    @if ($toko->status <= 1 && Auth::user()->level ==0 )
                             <nav class="navbar navbar-light">
                                 <div class="container-fluid justify-content-end ">
-                                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal" style="float: right">
+                                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Tambah Barang
                                     </button>
                                 </div>
                             </nav>
-                        @endif
+                    @endif
+
 
 
 
@@ -129,7 +162,7 @@
 
     {{-- Tambah --}}
     <!-- Modal -->
-    @if ($toko->status <= 1)
+    @if ($toko->status <= 1 && Auth::user()->level == 0 )
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

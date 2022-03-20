@@ -14,7 +14,7 @@
                     </a>
                 </li>
 
-               
+
 
                 {{-- Pegawai Gudang --}}
                     @if (Auth::user()->level == 1)
@@ -23,17 +23,17 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/pesanan"
                             aria-expanded="false">
-                            <i class="mdi mdi-account-network"></i>
+                            <i class="mdi mdi-cart-outline"></i>
                             <span class="hide-menu">Pesanan @if ($countRequest != 0) <small class="bg-danger px-1 py-1 rounded-2 m-5">{{ $countRequest }}</small> @endif </span>
                         </a>
                     </li>
 
                     <h6  style="margin-left: 10px" class="text-light mt-4 sembunyikan">Management data</h6>
-                    
+
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/barang"
                             aria-expanded="false">
-                            <i class="mdi mdi-account-network"></i>
+                            <i class="mdi mdi-cube-outline"></i>
                             <span class="hide-menu">Barang</span>
                         </a>
                     </li>
@@ -41,7 +41,7 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/jenis-barang"
                             aria-expanded="false">
-                            <i class="mdi mdi-account-network"></i>
+                            <i class="mdi mdi-store"></i>
                             <span class="hide-menu">Jenis Barang</span>
                         </a>
                     </li>
@@ -49,10 +49,10 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/satuan"
                             aria-expanded="false">
-                            <i class="mdi mdi-account-network"></i>
+                            <i class="mdi mdi-briefcase-check"></i>
                             <span class="hide-menu">Satuan</span>
                         </a>
-                    </li>               
+                    </li>
                 {{-- Pegawai gudang --}}
 
                 {{-- Administrator --}}
@@ -63,17 +63,17 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/pesanan"
                             aria-expanded="false">
-                            <i class="mdi mdi-account-network"></i>
+                            <i class="mdi mdi-cart-outline"></i>
                             <span class="hide-menu">Pesanan @if ($countRequest != 0) <small class="bg-danger px-1 py-1 rounded-2 m-5">{{ $countRequest }}</small> @endif </span>
                         </a>
                     </li>
 
                     <h6  style="margin-left: 10px" class="text-light mt-4 sembunyikan">Management data</h6>
-                    
+
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/barang"
                             aria-expanded="false">
-                            <i class="mdi mdi-account-network"></i>
+                            <i class="mdi mdi-cube-outline"></i>
                             <span class="hide-menu">Barang</span>
                         </a>
                     </li>
@@ -81,7 +81,7 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/jenis-barang"
                             aria-expanded="false">
-                            <i class="mdi mdi-account-network"></i>
+                            <i class="mdi mdi-store"></i>
                             <span class="hide-menu">Jenis Barang</span>
                         </a>
                     </li>
@@ -89,20 +89,20 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/satuan"
                             aria-expanded="false">
-                            <i class="mdi mdi-account-network"></i>
+                            <i class="mdi mdi-briefcase-check"></i>
                             <span class="hide-menu">Satuan</span>
                         </a>
-                    </li>  
+                    </li>
 
                     <h6 style="margin-left: 10px" class="text-light mt-4 sembunyikan">Administrator</h6>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/users"
                             aria-expanded="false">
-                            <i class="mdi mdi-human"></i>
+                            <i class="mdi mdi-account-multiple-outline"></i>
                             <span class="hide-menu">Pengguna</span>
                         </a>
-                    </li> 
+                    </li>
 
                  {{--Administrator  --}}
                 @else
@@ -112,21 +112,21 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/pesanan"
                         aria-expanded="false">
-                        <i class="mdi mdi-account-network"></i>
+                        <i class="mdi mdi-cart-outline"></i>
                         <span class="hide-menu">Pesanan</span>
                     </a>
                 </li>
-                    
+
                 @endif
 
-                
+
 
                 <h6 style="margin-left: 10px" class="text-light mt-4 sembunyikan">Management akun</h6>
 
                 <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/profil"
                         aria-expanded="false">
-                        <i class="mdi mdi-account-network"></i>
+                        <i class="mdi mdi-account"></i>
                         <span class="hide-menu">Profile</span>
                     </a>
                 </li>
@@ -135,7 +135,7 @@
                     <form action="/logout" method="post">
                     @csrf
                     <button type="submit" class="sidebar-link waves-effect waves-dark sidebar-link btn">
-                        <i class="mdi mdi-account-network"></i>
+                        <i class="mdi mdi-logout-variant"></i>
                         <span class="hide-menu">Logout</span>
                     </button>
                     </form>

@@ -52,6 +52,7 @@
 
                     @endif
 
+                    @if (Auth::user()->level ==0 )
                     <nav class="navbar navbar-light">
                         <div class="container-fluid justify-content-end ">
                             <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: right">
@@ -59,6 +60,7 @@
                             </button>
                         </div>
                       </nav>
+                    @endif
 
 
 

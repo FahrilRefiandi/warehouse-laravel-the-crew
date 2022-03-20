@@ -40,7 +40,7 @@
                             My Profile</a>
                         <form method="post" action="/logout">
                         @csrf
-                        <button class="dropdown-item" type="submit"><i class="ti-email me-1 ms-1"></i>
+                        <button class="dropdown-item" type="submit"><i class="ti-angle-double-right me-1 ms-1"></i>
                             Logout</a>
                         </form>
                     </ul>
