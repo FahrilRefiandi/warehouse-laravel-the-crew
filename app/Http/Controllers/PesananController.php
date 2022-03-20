@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Pesanan;
 use App\Models\Toko;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PesananController extends Controller
@@ -17,7 +18,11 @@ class PesananController extends Controller
      */
     public function index()
     {
-        $data=Toko::latest()->get();
+        if(Auth::user()->level == 0){
+            $data=Toko::latest('updated_at')->where('user_id',Auth::user()->id)->get();
+        }else{
+            $data=Toko::latest('updated_at')->get();
+        }
         $kodePesan="OR".date('dmy').rand(100,10000);
 
         return view('backend.pesanan',compact('data','kodePesan'));
@@ -63,6 +68,14 @@ class PesananController extends Controller
         return redirect("/pesanan/$req->pesanan_id")->with('sukses',"Data berhasil dihapus.!");
     }
 
+    public function updateStatusPesanan(Request $req,$id){
+        $req->validate(['status' => 'required']);
+
+        Toko::where('id',$id)->update(['status'=>$req->status]);
+        return redirect('/pesanan');
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -75,11 +88,14 @@ class PesananController extends Controller
         $request->validate([
             'kode_pesanan'=> 'required|unique:toko',
             'nama_toko'=> 'required|string',
+            'alamat'=> 'required',
         ]);
 
         Toko::create([
             'nama_toko' => $request->nama_toko,
             'kode_pesanan' => $request->kode_pesanan,
+            'alamat' => $request->alamat,
+            'user_id' => Auth::user()->id,
         ]);
 
         return redirect('/pesanan')->with('sukses',"Data $request->nama_toko berhasil disimpan.");
@@ -94,14 +110,18 @@ class PesananController extends Controller
      */
     public function show($id)
     {
+
         $idToko=$id;
         $toko=Toko::where('id',$id)->first();
         if($toko == null){
             return redirect('/pesanan')->with('gagal',"Buat pesanan terlebihdahulu.!");
         }
+
        $data= DB::select("SELECT
        toko.nama_toko,
        toko.kode_pesanan,
+       toko.alamat,
+       toko.user_id,
        pesanan.toko_id,
        pesanan.barang_id,
        pesanan.id,
@@ -136,59 +156,17 @@ class PesananController extends Controller
    WHERE
        toko.id = $id");
 
-    // $barang=Pesanan::where('toko_id',$idToko)->first();
-
-    // //    filter barang
-    // $pesanan=Pesanan::join('barang','pesanan.barang_id','barang.id')
-    // ->where('toko_id',$idToko)->get(['pesanan.*']);
-    // // $pesanan=Pesanan::where('toko_id',$idToko)->where('barang_id','!=',$barang->barang_id)->get();
-
-    //     dd(getQueryLog($pesanan));
-    // $filter=[];
-    // foreach($pesanan as $id){
-    //     array_push($filter,['id','!=',$id->barang_id]);
-    // }
-    // $barang=Barang::where($filter)->get();
-
-
-    //    filter barang
+        // cek level rincian pesanan
+        if (Auth::user()->level == 0) {
+            if($toko->user_id != Auth::user()->id){
+                return redirect('/pesanan')->with('gagal',"Pesanan Bukan Untuk Anda.!");
+            }
+        }
 
 
         $barang=Barang::all();
         return view('backend.rincianPesanan',compact('data','barang','idToko','toko'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        dd($id);
-    }
 }

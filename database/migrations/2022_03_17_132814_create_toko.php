@@ -17,6 +17,9 @@ class CreateToko extends Migration
             $table->id();
             $table->string('nama_toko');
             $table->string('kode_pesanan');
+            $table->string('alamat');
+            $table->enum('status',[0,1,2,3]);
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

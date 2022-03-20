@@ -1,3 +1,7 @@
+@php
+    use App\Models\Toko;
+    $countRequest=Toko::where('status','0')->count();
+@endphp
 <aside class="left-sidebar" data-sidebarbg="skin5" style="background-color: #2a4d69">
     <div class="scroll-sidebar">
         <nav class="sidebar-nav">
@@ -10,13 +14,100 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/barang"
-                        aria-expanded="false">
-                        <i class="mdi mdi-account-network"></i>
-                        <span class="hide-menu">Barang</span>
-                    </a>
-                </li>
+               
+
+                {{-- Pegawai Gudang --}}
+                    @if (Auth::user()->level == 1)
+                    <h6 style="margin-left: 10px" class="text-light mt-4 sembunyikan">Pegawai Gudang</h6>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/pesanan"
+                            aria-expanded="false">
+                            <i class="mdi mdi-account-network"></i>
+                            <span class="hide-menu">Pesanan @if ($countRequest != 0) <small class="bg-danger px-1 py-1 rounded-2 m-5">{{ $countRequest }}</small> @endif </span>
+                        </a>
+                    </li>
+
+                    <h6  style="margin-left: 10px" class="text-light mt-4 sembunyikan">Management data</h6>
+                    
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/barang"
+                            aria-expanded="false">
+                            <i class="mdi mdi-account-network"></i>
+                            <span class="hide-menu">Barang</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/jenis-barang"
+                            aria-expanded="false">
+                            <i class="mdi mdi-account-network"></i>
+                            <span class="hide-menu">Jenis Barang</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/satuan"
+                            aria-expanded="false">
+                            <i class="mdi mdi-account-network"></i>
+                            <span class="hide-menu">Satuan</span>
+                        </a>
+                    </li>               
+                {{-- Pegawai gudang --}}
+
+                {{-- Administrator --}}
+                    @elseif (Auth::user()->level == 2)
+
+                    {{-- <h6 style="margin-left: 10px" class="text-light mt-4 sembunyikan">Administrator</h6> --}}
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/pesanan"
+                            aria-expanded="false">
+                            <i class="mdi mdi-account-network"></i>
+                            <span class="hide-menu">Pesanan @if ($countRequest != 0) <small class="bg-danger px-1 py-1 rounded-2 m-5">{{ $countRequest }}</small> @endif </span>
+                        </a>
+                    </li>
+
+                    <h6  style="margin-left: 10px" class="text-light mt-4 sembunyikan">Management data</h6>
+                    
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/barang"
+                            aria-expanded="false">
+                            <i class="mdi mdi-account-network"></i>
+                            <span class="hide-menu">Barang</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/jenis-barang"
+                            aria-expanded="false">
+                            <i class="mdi mdi-account-network"></i>
+                            <span class="hide-menu">Jenis Barang</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/satuan"
+                            aria-expanded="false">
+                            <i class="mdi mdi-account-network"></i>
+                            <span class="hide-menu">Satuan</span>
+                        </a>
+                    </li>  
+
+                    <h6 style="margin-left: 10px" class="text-light mt-4 sembunyikan">Administrator</h6>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/users"
+                            aria-expanded="false">
+                            <i class="mdi mdi-human"></i>
+                            <span class="hide-menu">Pengguna</span>
+                        </a>
+                    </li> 
+
+                 {{--Administrator  --}}
+                @else
+
+                <h6 style="margin-left: 10px" class="text-light mt-4 sembunyikan">PENGELOLA TOKO</h6>
 
                 <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/pesanan"
@@ -25,35 +116,12 @@
                         <span class="hide-menu">Pesanan</span>
                     </a>
                 </li>
+                    
+                @endif
 
+                
 
-                <h6 style="margin-left: 10px" class="text-light mt-4">Management data</h6>
-
-                {{-- <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/supplier"
-                        aria-expanded="false">
-                        <i class="mdi mdi-account-network"></i>
-                        <span class="hide-menu">Supplier</span>
-                    </a>
-                </li> --}}
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/satuan"
-                        aria-expanded="false">
-                        <i class="mdi mdi-account-network"></i>
-                        <span class="hide-menu">Satuan</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/jenis-barang"
-                        aria-expanded="false">
-                        <i class="mdi mdi-account-network"></i>
-                        <span class="hide-menu">Jenis Barang</span>
-                    </a>
-                </li>
-
-                <h6 style="margin-left: 10px" class="text-light mt-4">Management akun</h6>
+                <h6 style="margin-left: 10px" class="text-light mt-4 sembunyikan">Management akun</h6>
 
                 <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/profil"

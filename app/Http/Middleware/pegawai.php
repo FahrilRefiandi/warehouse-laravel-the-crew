@@ -3,10 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-class admin
+class pegawai
 {
     /**
      * Handle an incoming request.
@@ -18,13 +18,15 @@ class admin
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()){
-            if(Auth::user()->level != 2 ){
+            if(Auth::user()->level >= 1){
+                return $next($request);
+            }else{
                 return redirect('/dashboard')->with('status',"Halaman bukan untuk anda.!");
             }
         }else{
             return redirect('/');
         }
 
-        return $next($request);
+        
     }
 }

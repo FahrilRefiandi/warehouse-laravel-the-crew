@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('nama');
             $table->string('username')->unique();
             $table->string('password');
-            $table->enum('level',[0,1])->default(0);
+            $table->enum('level',[0,1,2])->default(0);
             $table->string('foto_profil')->nullable();
             $table->rememberToken();
             $table->timestamps();

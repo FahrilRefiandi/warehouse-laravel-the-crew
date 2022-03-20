@@ -11,6 +11,14 @@
     <!-- Custom CSS -->
     <link href="{{ asset('backend') }}/dist/css/style.min.css" rel="stylesheet">
 
+    <style>
+        @media screen and (max-width: 1170px) {
+        .sembunyikan {
+            display: none;
+        }
+        }
+    </style>
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

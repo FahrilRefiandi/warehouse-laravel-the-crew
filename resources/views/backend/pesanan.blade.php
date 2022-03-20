@@ -67,9 +67,14 @@
                         <table class="table table-hover" id="example" >
                             <thead class="table-dark">
                                 <tr class="text-light" >
-                                  <th class="text-light" style="width: 20px">#</th>
+                                  <th class="text-light">#</th>
                                   <th class="text-light">Nama Toko</th>
+                                  <th class="text-light">Alamat Toko</th>
+                                  <th class="text-light">Status</th>
                                   <th class="text-light">Dibuat</th>
+                                  @if (Auth::user()->level != 0)
+                                  <th class="text-light">Status</th>
+                                  @endif
                                   <th class="text-light text-center ">Aksi</th>
 
                                 </tr>
@@ -79,10 +84,46 @@
                                   <tr>
                                     <th>{{ $loop->iteration }}</th>
                                     <td>{{ $item->nama_toko }}</td>
+                                    <td>{{ $item->alamat }}</td>
+                                    <td>
+                                        @php
+                                            if($item->status == 0){
+                                                $bg="bg-secondary";
+                                                $ketStatus="Belum ada respon.";
+                                            }elseif ($item->status == 1) {
+                                                $bg="bg-danger";
+                                                $ketStatus="Pesanan dibatalkan.";
+                                            }elseif ($item->status == 2) {
+                                                $bg="bg-success";
+                                                $ketStatus="Pesanan sedang diproses.";
+                                            }elseif ($item->status == 3) {
+                                                $bg="bg-warning";
+                                                $ketStatus="Pesanan sedang dalam perjalanan.";
+                                            }else {
+                                                $bg="bg-danger";
+                                                $ketStatus="Error";
+                                            }
+                                        @endphp
+                                        <small class="{{$bg}} text-light px-2 py-2 rounded-2">{{$ketStatus}}</small>
+                                    </td>
                                     {{-- <td>{{ $item->nama_barang }}</td> --}}
-                                    <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('dddd D MMMM YYYY') }}</td>
-                                    <td class="text-center" >
-                                        <a href="/pesanan/{{ $item->id }}" class="btn btn-success btn-md  rounded-2" > Rincian Barang </a>
+                                    <td>{{ \Carbon\Carbon::parse($item->updated_at)->isoFormat('HH:m dddd D MMMM YYYY') }}</td>
+                                    @if (Auth::user()->level != 0)
+                                    <td>
+                                        <form method="POST" action="/update-status-pesanan/{{ $item->id }}" class="input-group">
+                                            @csrf
+                                            <select class="form-select" aria-label="Default select example" name="status">
+                                                <option selected value="{{ $item->status }}">{{$ketStatus}}</option>
+                                                <option value="1">Pesanan Dibatalkan.</option>
+                                                <option value="2">Pesanan Sedang Diproses.</option>
+                                                <option value="3">Pesanan Sedang Dalam Perjalanan.</option>
+                                              </select>
+                                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Simpan</button>
+                                        </form>
+                                    </td>
+                                    @endif
+                                    <td class="text-center">
+                                        <a href="/pesanan/{{ $item->id }}" class="btn btn-success btn-md  rounded-2" > Rincian Pesanan </a>
                                     </td>
                                   </tr>
                                   @endforeach
@@ -104,7 +145,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Tambah Data Barang</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pesanan</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -136,6 +177,23 @@
                         @endsection
                     @enderror
                 </div>
+
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control  @error('alamat') is-invalid  @enderror" name="alamat" placeholder="Surabaya" id="Alamat">{{ old('alamat') }}</textarea>
+                    <label for="Alamat">Alamat</label>
+                    @error('alamat')
+                    <small class="text-danger" style="margin-left: 8px;" > {{$message}} </small>
+                    @section('modal')
+                    <script>
+                        var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
+                        document.onreadystatechange = function () {
+                        myModal.show();
+                        };
+                    </script>
+                    @endsection
+                @enderror
+                  </div>
 
 
 
