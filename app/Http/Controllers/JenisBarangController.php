@@ -14,18 +14,9 @@ class JenisBarangController extends Controller
      */
     public function index()
     {
+        //MENGAMBIL DATA JENIS BARANG DARI DATABASE
         $data=JenisBarang::orderBy('jenis','asc')->get();
         return view('backend.jenis',compact('data'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -36,6 +27,7 @@ class JenisBarangController extends Controller
      */
     public function store(Request $request)
     {
+        // validasi data
         $request->validate([
             'jenis_barang'=>'required|string',
         ]);
@@ -55,16 +47,12 @@ class JenisBarangController extends Controller
      */
     public function show($id)
     {
+        // menampilkan data jenis barang berdasarkan id
         $data=JenisBarang::where('id',$id)->first();
+        // mengirim dan menampilkan data ke view
         return view('backend.editJenisBarang',compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     /**
      * Update the specified resource in storage.
@@ -75,11 +63,12 @@ class JenisBarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
+        // validasi update jenis barang
         $request->validate([
             'jenis_barang'=>'required|string',
         ]);
 
+        // update jenis barang
         JenisBarang::where('id',$id)->update([
             'jenis' => $request->jenis_barang,
         ]);
@@ -95,6 +84,7 @@ class JenisBarangController extends Controller
      */
     public function destroy($id)
     {
+        // menghapus data jenis barang berdasarkan id
         JenisBarang::where('id',$id)->delete();
         return redirect('/jenis-barang')->with('sukses',"Data berhasil dihapus.");
     }

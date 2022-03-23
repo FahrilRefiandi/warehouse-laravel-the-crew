@@ -18,29 +18,20 @@ class BarangController extends Controller
      */
     public function index()
     {
-        // $data = Barang::latest()->get();
+        // MENAMPILKAN DATA BARANG
         $data = Barang::
         leftJoin('satuan','barang.satuan_id','satuan.id')
         ->leftJoin('jenis_barang','jenis_barang.id','barang.jenis_id')
         ->latest()->get(['barang.*','satuan.satuan','jenis_barang.jenis']);
 
-        // dd($data);
+        // MENGAMBIL DATA DARI DATABASE DISIMPAN KEDALAM VARIABLE JENIS BARANG DAN SATUAN
         $jenisBarang=JenisBarang::orderBy('jenis','asc')->get();
         $satuan=Satuan::orderBy('satuan','asc')->get();
-        // $supplier=Supplier::orderBy('nama_supplier','asc')->get();
 
+        // MENAMPILKAN DATA BARANG DI VIEW DAN MENGIRIMKAN VAR DATA
         return view('backend.barang',compact('data','jenisBarang','satuan'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -50,7 +41,7 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-
+        //VALIDASI INPUTAN
         $request->validate([
             'kode_barang' => 'required|unique:barang',
             'nama_barang' => 'required|string',
@@ -58,10 +49,9 @@ class BarangController extends Controller
             'satuan' => 'required|numeric',
             // 'supplier' => 'required|numeric',
             'jenis' => 'required|numeric',
-            // 'harga_beli' => 'required|numeric',
-            // 'harga_jual' => 'required|numeric',
         ]);
 
+        // insert data ke table barang
         Barang::create([
             'kode_barang' => $request->kode_barang,
             'nama_barang' => $request->nama_barang,
@@ -72,6 +62,7 @@ class BarangController extends Controller
             // 'harga_beli' => $request->harga_beli,
             // 'harga_jual' => $request->harga_jual,
         ]);
+        // MENGIRIMKAN NOTIFIKASI DAN REDIRECT KE HALAMAN BARANG
         return redirect('/barang')->with('sukses',"Data $request->nama_barang berhasil disimpan.");
     }
 
@@ -83,22 +74,12 @@ class BarangController extends Controller
      */
     public function show($id)
     {
+        // MENAMPILKAN DATA BARANG BERDASARKAN ID
         $data = Barang::where('id',$id)->first();
         $jenisBarang=JenisBarang::orderBy('jenis','asc')->get();
         $satuan=Satuan::orderBy('satuan','asc')->get();
-
+        // MENAMPILKAN EDITBARANG
         return view('backend.editBarang',compact('data','jenisBarang','satuan'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
     }
 
     /**
@@ -110,6 +91,7 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // VALIDAASI INPUTAN UPDATE BARANG
         $request->validate([
             'kode_barang' => ['required',Rule::unique('barang')->ignore($id,)],
             'nama_barang' => 'required|string',
@@ -142,6 +124,7 @@ class BarangController extends Controller
      */
     public function destroy( Request $req, $id)
     {
+        // DELETE DATA BARANG BERDASARKAN ID
         Barang::where('id',$id)->delete();
         return redirect('/barang')->with('sukses',"Data $req->nama_barang berhasil dihapus.");
     }

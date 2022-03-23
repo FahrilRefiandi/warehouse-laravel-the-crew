@@ -17,11 +17,15 @@ class admin
      */
     public function handle(Request $request, Closure $next)
     {
+        // cek apakah user sudah login
         if(Auth::user()){
+            // cek apakah user adalah BUKAN admin
             if(Auth::user()->level != 2 ){
+                // jika bukan,maka redirect ke halaman DASHBOARD
                 return redirect('/dashboard')->with('status',"Halaman bukan untuk anda.!");
             }
         }else{
+            // jika belum LOGIN ,maka redirect ke halaman UTAMA
             return redirect('/');
         }
 

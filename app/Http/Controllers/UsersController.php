@@ -16,51 +16,10 @@ class UsersController extends Controller
      */
     public function index()
     {
+        // mengambil data user dan mengurutkan berdasarkan level
         $data = User::orderBy('level','desc')->orderBy('nama','asc')->where('id','!=',Auth::user()->id)->get();
+        // kirim ke view users
         return view('backend.users',compact('data'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -72,10 +31,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // update data user password berdasarkan id
         User::where('id',$id)->update([
             'password' => Hash::make(12345678),
         ]);
-
+        // alihkan halaman ke halaman users dan kirimkan pesan sukses
         return redirect('/users')->with('sukses',"Password $request->nama Berhasil direset.!");
     }
 
@@ -87,7 +47,9 @@ class UsersController extends Controller
      */
     public function destroy(Request $req,$id)
     {
+        // menghapus data user berdasarkan id
         User::where('id',$id)->delete();
+        // alihkan halaman ke halaman users dan tampilkan pesan sukses
         return redirect('/users')->with('sukses',"Pengguna $req->nama Berhasil dihapus.!");
     }
 }

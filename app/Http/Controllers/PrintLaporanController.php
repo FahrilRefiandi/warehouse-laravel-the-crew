@@ -16,14 +16,18 @@ class PrintLaporanController extends Controller
         leftJoin('satuan','barang.satuan_id','satuan.id')
         ->leftJoin('jenis_barang','jenis_barang.id','barang.jenis_id')
         ->orderBy('stok','desc')->get(['barang.*','satuan.satuan','jenis_barang.jenis']);
+        // mengirim data ke view
         return view('backend.laporan.barang',compact('data'));
     }
 
     public function laporanPesanan(){
+        // mengambil data toko
         $tokos=Toko::get();
+        // mengambil data pesanan
         $pesanans=Pesanan::join('barang','barang.id','pesanan.barang_id')
         ->join('satuan','satuan.id','barang.satuan_id')
         ->get(['pesanan.*','barang.nama_barang','barang.stok','barang.kode_barang','satuan.satuan']);
+        // mengirim data ke view
         return view('backend.laporan.pesanan',compact('tokos','pesanans'));
     }
 

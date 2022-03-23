@@ -38,7 +38,7 @@ Project Management : Fahril Refiandi. <br>
 Programmer         : Fahril Refiandi. <br>
 Web Design         : Dara Ilma Deudoena. <br>
 Web Design         : Tegar Try Buana. <br>
-Tester             : Tita Arum Shela Santik. <br>
+
 
 ## Cara menjalankan :
 
@@ -53,6 +53,8 @@ Tester             : Tita Arum Shela Santik. <br>
 jika terjadi kesalahan program seperti : <br>
  foto tidak bisa diload jalankan php artisan storage:link. <br>
  atau hubungi <a href="https://wa.me/+6282131371687?text=warehouse-laravel-the-crew%20tidak%20bisa%20jalan%20%2F%20terjadi%20masalah%3A%20(sebutkan%20permasalahannya).">Whatsapp.</a> <br>
+
+ <h2>JUST FOR FUN.!</h2>
 <!-- 
 ## Code of Conduct
 

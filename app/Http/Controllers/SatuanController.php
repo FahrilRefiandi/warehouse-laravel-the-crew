@@ -14,19 +14,10 @@ class SatuanController extends Controller
      */
     public function index()
     {
+        // mengambil data satuan
         $data=Satuan::orderBy('satuan','asc')->latest()->get();
-
+        // mengirim data ke view
         return view('backend.satuan',compact('data'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -37,14 +28,16 @@ class SatuanController extends Controller
      */
     public function store(Request $request)
     {
+        // validasi data
         $request->validate([
             'satuan'=>'required|string',
         ]);
-
+        // insert data ke table satuan
         Satuan::create([
             'satuan' => $request->satuan,
         ]);
 
+        // alihkan halaman ke halaman satuan
         return redirect('/satuan')->with('sukses',"Data $request->satuan berhasil ditambahkan.");
     }
 
@@ -56,19 +49,10 @@ class SatuanController extends Controller
      */
     public function show($id)
     {
+        // mengambil data satuan berdasarkan id
         $data=Satuan::where('id',$id)->first();
+        // mengirim data ke view
         return view('backend.editSatuan',compact('data'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
     }
 
     /**
@@ -80,14 +64,17 @@ class SatuanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // validasi data
         $request->validate([
             'satuan'=>'required|string',
         ]);
 
+        // update data satuan
         Satuan::where('id',$id)->update([
             'satuan' => $request->satuan,
         ]);
 
+        // alihkan halaman ke halaman satuan
         return redirect('/satuan')->with('sukses',"Data $request->satuan berhasil diupdate.");
     }
 
@@ -99,7 +86,9 @@ class SatuanController extends Controller
      */
     public function destroy($id)
     {
+        // menghapus data satuan berdasarkan id
         Satuan::where('id',$id)->delete();
+        // alihkan halaman ke halaman satuan dan tampilkan pesan sukses
         return redirect('/satuan')->with('sukses',"Data berhasil dihapus.");
     }
 }

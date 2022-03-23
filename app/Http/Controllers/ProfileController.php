@@ -18,44 +18,12 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        // mengambil data user berdasarkan yang login
         $data = Auth::user();
-        // dd($data);
+        // mengirim data ke view
         return view('backend.profile',compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -66,59 +34,57 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // validasi data
         $request->validate([
             'nama' => 'required|string',
             'username' =>  ['required','regex:/^\S*$/u',Rule::unique('users')->ignore($id)],
         ]);
 
+        // cek jika password lama atau baru tidak kosong
         if($request->password_lama || $request->password_baru){
+            // validasi password lama,baru,dan konfirmasi pasword
             $request->validate([
                 'password_lama' => 'required|min:8',
                 'password_baru' => 'required|same:konfirmasi_password|min:8',
                 'konfirmasi_password' => 'required|min:8',
             ]);
-
+            // cek apakah password lama sama dengan password yang ada di database
             if(Hash::check($request->password_lama,Auth::user()->password)){
+                // jika sama,maka update password
                 User::where('id',$id)->update([
                     'password' => Hash::make($request->password_baru),
                 ]);
+                // jika tidak sama,maka redirect ke halaman profile dan tampilkan pesan error
             }else{
                 return redirect('/profil')->with('gagal',"Profil $request->nama gagal diubah.! Password yang anda masukkan salah.");
             }
         }
-
+        // update data user
         User::where('id',$id)->update([
             'nama' => $request->nama,
             'username' => $request->username,
         ]);
-
-    return redirect('/profil')->with('sukses',"Profil $request->nama berhasil diubah.!");
+        // redirect ke halaman profile dan tampilkan pesan sukses
+        return redirect('/profil')->with('sukses',"Profil $request->nama berhasil diubah.!");
     }
 
     public function updateFotoProfile(Request $request, $id)
     {
+        // validasi foto profile
         $request->validate([
             'foto_profil' => 'file|image|required',
         ]);
-
+        // upload file foto profile
         $file = $request->file('foto_profil')->store('foto-profil');
+        // menghapus file foto profile yang lama
         Storage::delete(Auth::user()->foto_profil);
+        // update foto profile ke database
         User::where('id',$id)->update([
             'foto_profil' => $file,
         ]);
-
+        // redirect ke halaman profile dan tampilkan pesan sukses
         return redirect('/profil')->with('sukses',"Foto profil berhasil diubah.!");
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

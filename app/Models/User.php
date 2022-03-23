@@ -16,6 +16,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'nama',
         'username',
@@ -42,11 +43,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    // public function photoProfile(){
-    //     if($this->attributes['foto_profil'] == null ){
-    //         return 'foto-profil/user.png';
-    //     }
-    //     return $this->attributes['foto_profil'];
-    // }
 }
