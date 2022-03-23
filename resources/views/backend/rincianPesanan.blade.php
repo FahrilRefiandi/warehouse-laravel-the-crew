@@ -91,8 +91,9 @@ if($toko->status == 0){
                                   </select>
                                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Simpan</button>
                             </form>
+                            <hr class="mb-5">
                         </div>
-                    </div>
+                    </nav>
                     @endif
 
                     @if ($toko->status <= 1 && Auth::user()->level ==0 )

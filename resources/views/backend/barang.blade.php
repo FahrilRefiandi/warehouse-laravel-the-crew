@@ -42,7 +42,12 @@
                     @endif
 
                     <nav class="navbar navbar-light">
-                        <div class="container-fluid justify-content-end ">
+                        <div class="container-fluid justify-content-end">
+                            @if (Auth::user()->level == 2)
+                                <a href="/laporan-barang" type="submit" target="__blank" class="btn btn-dark me-2">
+                                    <i class="ti-printer me-1 ms-1"></i> Print.
+                                </a>
+                            @endif
                             <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: right">
                                 Tambah data
                             </button>

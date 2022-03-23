@@ -72,7 +72,7 @@
                                         <tr>
                                             <th>{{ $loop->iteration }}</th>
                                             <td>
-                                             
+
                                                 <div class="d-flex ">
                                                     @if ($item->foto_profil)
                                                     <img src="{{Storage::url($item->foto_profil)}}" width="40" height="40" alt="{{ $item->nama }}">
@@ -82,13 +82,15 @@
                                                   <div style="margin-left: 20px" >
                                                     <h6>{{ $item->nama }}</h6>
                                                     @if ( $item->level == 0)
-                                                    <p class="text-danger" >PENGELOLA TOKO</p>
+                                                    <p class="text-dark">Pengelola Toko.</p>
+                                                    @elseif ( $item->level == 1)
+                                                    <p class="text-info" >Pegawai Gudang.</p>
                                                     @else
-                                                    <p class="text-info">Administrator</p>
+                                                    <p class="text-success">Administrator</p>
                                                     @endif
                                                   </div>
                                                 </div>
-                                                
+
                                             </td>
                                             <td>{{ $item->username }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('dddd D MMMM YYYY') }}</td>
@@ -100,7 +102,7 @@
                                                     <input type="hidden" value="{{ $item->nama }}" name="nama">
                                                     <button class="btn btn-warning btn-icon  rounded-2" onclick="return confirm('Password pengguna {{ $item->nama }} akan direset.! Password default adalah (12345678) ') " type="submit"> <i class="mdi mdi-reload text-light"></i> </button>
                                                 </form>
-                                                
+
                                                 <form action="/users/{{ $item->id }}" method="post"
                                                     class="d-inline">
                                                     @method("DELETE")

@@ -155,6 +155,7 @@ class PesananController extends Controller
            barang.jenis_id = jenis_barang.id
    WHERE
        toko.id = $id");
+       
 
         // cek level rincian pesanan
         if (Auth::user()->level == 0) {

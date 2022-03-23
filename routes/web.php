@@ -5,6 +5,7 @@ use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\PrintLaporanController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,5 +53,12 @@ Route::post('/update-status-pesanan/{id}',[PesananController::class,'updateStatu
 
 // level Admin
 Route::resource('/users',UsersController::class)->middleware('admin');
+
+// laporan
+Route::get('/laporan-barang',[PrintLaporanController::class,'laporanBarang'])->middleware('admin');
+Route::get('/laporan-pesanan',[PrintLaporanController::class,'laporanPesanan'])->middleware('admin');
+
+
+
 // level Admin
 

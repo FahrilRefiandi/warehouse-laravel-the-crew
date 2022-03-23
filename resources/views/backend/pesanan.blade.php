@@ -52,15 +52,19 @@
 
                     @endif
 
-                    @if (Auth::user()->level ==0 )
                     <nav class="navbar navbar-light">
                         <div class="container-fluid justify-content-end ">
+                            @if (Auth::user()->level ==0 )
                             <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: right">
                                 Pesan
                             </button>
+                            @elseif (Auth::user()->level == 2 )
+                            <a href="/laporan-pesanan" type="submit" target="__blank" class="btn btn-dark me-2">
+                                <i class="ti-printer me-1 ms-1"></i> Print.
+                            </a>
+                            @endif
                         </div>
                       </nav>
-                    @endif
 
 
 
