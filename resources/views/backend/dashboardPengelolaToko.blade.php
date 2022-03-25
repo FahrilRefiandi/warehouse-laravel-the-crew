@@ -50,31 +50,50 @@
                             </div>
                         </div>
 
+                        @if (Auth::user()->level == 0)
                         {{-- terjual --}}
                         <div class="col-xl-3 col-md-6">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1 fs-4 ">
-                                                Barang Terjual (Bulanan)</div>
-                                            <div class="h5 mb-0 mt-3 font-weight-bold ">{{$barangTerjual}} Terjual.</div>
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1 fs-4 fs-4 ">
+                                                Barang Terbeli (Bulanan)</div>
+                                            <div class="h5 mb-0 mt-3 font-weight-bold ">{{$barangTerjual}} Terbeli.</div>
                                         </div>
                                         <div class="col-auto">
-                                                <i class="fas fa-dollar-sign fa-3x"></i>
+                                            <i class="fas fa-dollar-sign fa-3x"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        @else
+                        {{-- terjual --}}
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1 fs-4">
+                                                Barang Terjual (Bulanan)</div>
+                                            <div class="h5 mb-0 mt-3 font-weight-bold ">{{$barangTerjual}} Terjual.</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-3x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                         {{-- barang --}}
                         <div class="col-xl-3 col-md-6">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1 fs-4 ">Barang
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1 fs-4">Barang
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -96,7 +115,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 fs-4 ">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 fs-4">
                                                 Barang Dikirim.</div>
                                             <div class="h5 mb-0 font-weight-bold mt-3">{{ $terkirim }} Terkiirim.</div>
                                         </div>
@@ -112,13 +131,12 @@
                     {{-- table --}}
                     <div class="row mt-5 ">
                         <div class="col">
-                        <div class="card shadow-lg ">
+                        <div class="card shadow-lg">
                             <div class="card-body">
-                            <h4 class="card-title mb-4">Pesanan Terbaru.</h4>
+                            <h4 class="card-title mb-3 ">  Pesanan {{Auth::user()->nama}}  </h4>
 
-
-                             {{-- table --}}
-                             <table class="table">
+                            {{-- table --}}
+                            <table class="table">
                                 <thead>
                                   <tr class="bg-dark">
                                     <th scope="col" class="text-light">#</th>
@@ -162,12 +180,11 @@
                               </table>
                             {{-- table --}}
 
-
                             </div>
                         </div>
                         </div>
                         {{-- <div class="col-sm-4">
-                        <div class="card shadow-lg ">
+                        <div class="card shadow-lg">
                             <div class="card-body">
                             <h5 class="card-title">Special title treatment</h5>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>

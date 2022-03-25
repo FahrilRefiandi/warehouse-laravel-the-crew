@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\ProfileController;
@@ -24,9 +25,7 @@ Route::get('/', function () {
     return view('cover');
 });
 
-Route::get('/dashboard', function () {
-    return view('backend.dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class,'index'] )->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 

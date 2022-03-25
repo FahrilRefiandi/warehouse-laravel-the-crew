@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images')}}/logo/logo-kecil.png">
     <!-- Custom CSS -->
     <link href="{{ asset('backend') }}/dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         @media screen and (max-width: 1170px) {
@@ -56,6 +57,7 @@
     </div>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('backend')}}/assets/libs/jquery/dist/jquery.min.js"></script>
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
 
