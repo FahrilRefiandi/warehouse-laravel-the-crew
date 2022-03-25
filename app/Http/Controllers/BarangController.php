@@ -22,7 +22,7 @@ class BarangController extends Controller
         $data = Barang::
         leftJoin('satuan','barang.satuan_id','satuan.id')
         ->leftJoin('jenis_barang','jenis_barang.id','barang.jenis_id')
-        ->latest()->get(['barang.*','satuan.satuan','jenis_barang.jenis']);
+        ->latest('updated_at')->get(['barang.*','satuan.satuan','jenis_barang.jenis']);
 
         // MENGAMBIL DATA DARI DATABASE DISIMPAN KEDALAM VARIABLE JENIS BARANG DAN SATUAN
         $jenisBarang=JenisBarang::orderBy('jenis','asc')->get();

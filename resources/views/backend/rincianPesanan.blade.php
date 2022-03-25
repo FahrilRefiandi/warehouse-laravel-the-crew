@@ -120,8 +120,9 @@ if($toko->status == 0){
                                         <th class="text-light">Jenis</th>
                                         <th class="text-light">Jumlah Pesan</th>
                                         <th class="text-light">Dibuat</th>
-                                        <th class="text-light text-center ">Aksi</th>
-
+                                        @if (Auth::user()->level == 0 && $toko->status < 1)
+                                            <th class="text-light text-center ">Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -133,6 +134,7 @@ if($toko->status == 0){
                                             <td>{{ $item->jumlah_beli }} <strong
                                                     class="text-info">{{ $item->satuan }}</strong></td>
                                             <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('dddd D MMMM YYYY') }}
+                                                @if (Auth::user()->level == 0 && $toko->status < 1)
                                             </td>
                                             <td class="text-center">
                                                 <form action="/delete-rincian-pesanan/{{ $item->id }}" method="post"
@@ -147,6 +149,7 @@ if($toko->status == 0){
                                                         type="submit"> <i class="mdi mdi-delete text-light"></i> </button>
                                                 </form>
                                             </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>
