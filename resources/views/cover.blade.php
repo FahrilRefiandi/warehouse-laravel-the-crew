@@ -11,32 +11,39 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @laravelPWA
-    <title>WAREHOUSE The Crew.</title>
+    <title>Warehouse | The Crew.</title>
+
+    {{-- googlefont --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    {{-- googlefont --}}
   </head>
   <body>
 
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top nav-uk ">
         <div class="container">
-          <a class="navbar-brand" href="#">The Crew.</a>
+          <a class="navbar-brand" href="#" style="font-family: 'Bebas Neue', cursive; font-family: 'Noto Sans', sans-serif;" >The Crew.</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a style="font-family: 'Noto Sans', sans-serif;" class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
               @if (Auth::user())
               <li class="nav-item">
-                <a class="nav-link" href="/dashboard">Dashboard</a>
+                <a style="font-family: 'Noto Sans', sans-serif;" class="nav-link" href="/dashboard">Dashboard</a>
               </li>
               @else
               <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+                <a style="font-family: 'Noto Sans', sans-serif;" class="nav-link" href="/login">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
+                <a style="font-family: 'Noto Sans', sans-serif;" class="nav-link" href="/register">Register</a>
               </li>
               @endif
             </ul>
@@ -104,7 +111,7 @@
         </div>
       </div>
       <div class="col d-flex align-items-start">
-        <i class="fa-solid fa-users-gear flex-shrink-0 me-3" style="width: 1.75em;height:1.75em " ></i>
+        <i class="fa-solid fa-list-check flex-shrink-0 me-3" style="width: 1.75em;height:1.75em " ></i>
         <div>
           <h4 class="fw-bold mb-0">Laporan Pesanan.</h4>
           <p>Memudahkan pengelola gudang membuat laporan pesanan.</p>
@@ -148,9 +155,9 @@
             </div>
                 <div class="row team-items">
 
-                    <div class="col-3 single-item" data-aos="fade-right" data-aos-offset="400" >
+                    <div class="col-3 single-item" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
                         <div class="item">
-                            <div class="thumb"data-aos="fade-right">
+                            <div class="thumb rounded-3">
                                 <img class="img-fluid" src="{{asset('images/team/fahril.jpg')}}" alt="Fahril Refiandi">
                                 <div class="overlay">
                                     <h4>FAHRIL REFIANDI.</h4>
@@ -163,7 +170,7 @@
                                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                             </li>
                                             <li class="instagram">
-                                                <a href="https://www.instagram.com/farilannd"><i class="fab fa-instagram"></i></a>
+                                                <a target="__blank" href="https://www.instagram.com/farilannd"><i class="fab fa-instagram"></i></a>
                                             </li>
                                             <li class="bg-dark rounded-circle">
                                                 <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -176,16 +183,16 @@
                                 <span class="message">
                                     <a href="#"><i class="fas fa-user"></i></a>
                                 </span>
-                                <h4>FAHRIL REFIANDI</h4>
+                                <h4>FAHRIL REFIANDI.</h4>
                                 <span>Project Manager</span>
                                 <span>Programmer</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 single-item" data-aos="fade-right" data-aos-offset="400" >
+                    <div class="col-3 single-item" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000"  >
                         <div class="item">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://i.ibb.co/JC4skS0/team-animate.jpg" alt="Thumb">
+                            <div class="thumb rounded-3">
+                                <img class="img-fluid" src="{{asset('images/team/dara.jpg')}}" alt="Thumb">
                                 <div class="overlay">
                                     <h4>Dara Ilma Deudoena.</h4>
                                     <p>
@@ -194,10 +201,10 @@
                                     <div class="social">
                                         <ul>
                                             <li class="instagram">
-                                                <a href="https://www.instagram.com/daradona_/"><i class="fab fa-instagram"></i></a>
+                                                <a target="__blank" href="https://www.instagram.com/daradona_/"><i class="fab fa-instagram"></i></a>
                                             </li>
-                                            <li class="vimeo">
-                                                <a href="#"><i class="fab fa-vimeo-v"></i></a>
+                                            <li class="bg-dark rounded-circle">
+                                                <a href="#"><i class="fab fa-tiktok"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -212,22 +219,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 single-item" data-aos="fade-left" data-aos-offset="400"  >
+                    <div class="col-3 single-item" data-aos="fade-left" data-aos-offset="300" data-aos-duration="1000" >
                         <div class="item">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://i.ibb.co/JC4skS0/team-animate.jpg" alt="Thumb">
+                            <div class="thumb rounded-3">
+                                <img class="img-fluid" src="{{asset('images/team/tegar.jpg')}}" alt="Thumb">
                                 <div class="overlay">
-                                    <h4>Tegar Try B.D</h4>
+                                    <h4>Tegar Try B.D.</h4>
                                     <p>
                                           The Crew Team
                                     </p>
                                     <div class="social">
                                         <ul>
                                             <li class="instagram">
-                                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                                <a target="__blank" href="https://www.instagram.com/tegar_artaa/"><i class="fab fa-instagram"></i></a>
                                             </li>
-                                            <li class="vimeo">
-                                                <a href="#"><i class="fab fa-vimeo-v"></i></a>
+                                            <li class="bg-dark rounded-circle">
+                                                <a href="#"><i class="fab fa-tiktok"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -237,27 +244,27 @@
                                 <span class="message">
                                     <a href="#"><i class="fas fa-user"></i></a>
                                 </span>
-                                <h4>Tegar Try B.D</h4>
+                                <h4>Tegar Try B.D.</h4>
                                 <span>Web Designer</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 single-item" data-aos="fade-left" data-aos-offset="400" >
+                    <div class="col-3 single-item" data-aos="fade-left" data-aos-offset="300" data-aos-duration="1500" >
                         <div class="item">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://i.ibb.co/JC4skS0/team-animate.jpg" alt="Thumb">
+                            <div class="thumb rounded-3">
+                                <img class="img-fluid" src="{{asset('images/team/tita.jpg')}}" alt="Thumb">
                                 <div class="overlay">
-                                    <h4>Tita Arum Sheila Santik</h4>
+                                    <h4>Tita Arum Shela Santik.</h4>
                                     <p>
                                         The Crew Team.
                                     </p>
                                     <div class="social">
                                         <ul>
                                             <li class="instagram">
-                                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                                <a target="__blank" href="https://instagram.com/titaaarum"><i class="fab fa-instagram"></i></a>
                                             </li>
-                                            <li class="vimeo">
-                                                <a href="#"><i class="fab fa-vimeo-v"></i></a>
+                                            <li class="bg-dark rounded-circle">
+                                                <a href="#"><i class="fab fa-tiktok"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -267,8 +274,8 @@
                                 <span class="message">
                                     <a href="#"><i class="fas fa-user"></i></a>
                                 </span>
-                                <h4>Tita Arum Sheila Santik</h4>
-
+                                <h4>Tita Arum Shela Santik.</h4>
+                                <span>Tester</span>
                             </div>
                         </div>
                     </div>

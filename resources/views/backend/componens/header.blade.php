@@ -6,20 +6,8 @@
             </a>
             <div class="navbar-brand">
                 <a href="index.html" class="logo">
-                    <!-- Logo icon -->
-                    <b class="logo-icon">
-                        <!-- Dark Logo icon -->
-                        <img src="{{asset('images')}}/logo/logo-kecil.png" alt="homepage" class="dark-logo" width="40" height="40" />
-                        <!-- Light Logo icon -->
-                        <img src="{{asset('images')}}/logo/logo-kecil.png" alt="homepage" class="light-logo" width="40" height="40" />
-                    </b>
                     <span class="logo-text">
-
-                        {{-- <img src="{{asset('backend')}}/assets/images/logo-text.png" alt="homepage" class="dark-logo" /> --}}
-                        <h4 class=" d-inline text-light dark-logo" style="font-family: 'Noto Sans', sans-serif;" >Warehouse <sup style="font-size: 12px; color:	#8a8583 " >The Crew</sup> </h5>
-
-                        {{-- <h5 class=" d-inline light-logo">Warehouse</h5> --}}
-                        {{-- <img src="{{asset('backend')}}/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> --}}
+                        <h4 class="m-3 d-inline text-light dark-logo" style="font-family: 'Noto Sans', sans-serif;" >Warehouse <sup style="font-size: 12px; color:	#8a8583 ">The Crew</sup> </h5>
                     </span>
                 </a>
             </div>
