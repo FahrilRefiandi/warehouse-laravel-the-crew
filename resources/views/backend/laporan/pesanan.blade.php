@@ -64,14 +64,7 @@
                             <td class="border-0"   colspan="1" ></td>
                             <td class="border-0" >{{$pesanan->kode_barang}}</td>
                             <td class="border-0" >{{$pesanan->nama_barang}}</td>
-                            <td class="border-0" >{{$pesanan->stok.' '.$pesanan->satuan}}</td>
-                        </tr>
-                        @else
-                        <tr>
-                            <td class="border-0"  colspan="1" ></td>
-                            <td class="border-0" >Belum ada pesanan.</td>
-                            <td class="border-0" >Belum ada pesanan.</td>
-                            <td class="border-0" >Belum ada pesanan.</td>
+                            <td class="border-0" >{{$pesanan->jumlah_beli.' '.$pesanan->satuan}}</td>
                         </tr>
                     @endif
                 @endforeach
